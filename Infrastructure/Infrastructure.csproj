@@ -16,8 +16,4 @@
     <ProjectReference Include="..\CoreBusiness\CoreBusiness.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Data\Config\" />
-  </ItemGroup>
-
 </Project>
