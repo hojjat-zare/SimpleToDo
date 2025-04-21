@@ -1,4 +1,5 @@
 ﻿using Ardalis.GuardClauses;
+using CoreBusiness.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CoreBusiness.Entities.ToDo;
 
-public class ToDo : BaseEntity
+public class ToDo : BaseEntity,IAggregateRoot
 {
     public string Title { get;private set; }
     public string? Description { get;private set; }
