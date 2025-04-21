@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CoreBusiness.Entities.ToDo;
 
-public class ToDo
+public class ToDo : BaseEntity
 {
     public string Title { get;private set; }
     public string? Description { get;private set; }
