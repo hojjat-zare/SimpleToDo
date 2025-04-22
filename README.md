@@ -5,8 +5,14 @@
 This project is a simple web application built with ASP.NET Core, designed to demonstrate the implementation of Clean Architecture principles and the CQRS (Command Query Responsibility Segregation) pattern. The application enables users to manage ToDo items through basic CRUD (Create, Read, Update, Delete) operations. It is structured to promote separation of concerns, maintainability, and testability, making it an ideal example for learning modern software architecture practices in .NET.
 
 ## Configuring Database in appsettings
+By default, the application is configured to use a InMemory database for development purposes. However, it can be easily switched to use a SQL Server database by modifying `appsettings.Development.json` file and removing below part:
 
-To set up the database for the application, follow these steps:
+```json
+  "UseOnlyInMemoryDatabase": true,
+```
+This allows for persistent data storage and is suitable for production environments.
+
+To set up SQL Server database for the application, follow these steps:
 
 1. **Locate the Configuration File**
 
