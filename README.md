@@ -81,6 +81,8 @@ Follow these steps to build and run the application locally:
    
 ## Additional Information
 
+- The application is developed following Clean Architecture principles and domain-driven design (DDD) practices as mentioned in the [Microsoft documentations](https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/common-web-application-architectures "Clean Architecture").
+- CQRS pattern has been implemented using Endpoint however it is possible to use MediatR or other libraries for more complex scenarios. for more information refer to [this link](https://github.com/dotnet-architecture/eShopOnWeb/issues/469 "CQRS").
 - The application uses Entity Framework Core for data access and assumes a SQL Server database. To use a different database provider, update the EF Core configuration in the `Infrastructure` project accordingly.
 - For further exploration, the solution includes unit tests in the `Tests` project, which can be executed with `dotnet test` from the test project directory.
 - Optionally, you can deploy the application to a cloud platform like Azure by following standard .NET deployment practices.
