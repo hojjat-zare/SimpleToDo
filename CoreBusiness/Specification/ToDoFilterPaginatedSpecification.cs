@@ -19,6 +19,7 @@ public class ToDoFilterPaginatedSpecification : Specification<ToDo>
                 (string.IsNullOrEmpty(title) || t.Title.Contains(title)) &&
                 (!status.HasValue || t.Status == status)
             )
+            .OrderBy(t => t.Id)
             .Skip(pageSize * pageIndex)
             .Take(pageSize);
     }
