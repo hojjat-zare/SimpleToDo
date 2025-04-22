@@ -1,8 +1,12 @@
 using CoreBusiness.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using MinimalApi.Endpoint.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddEndpoints();
+
 
 bool useOnlyInMemoryDatabase = false;
 if (builder.Configuration["UseOnlyInMemoryDatabase"] != null)
@@ -42,5 +46,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.MapEndpoints();
 
 app.Run();
