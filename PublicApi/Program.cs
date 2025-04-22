@@ -1,3 +1,4 @@
+using AutoMapper;
 using CoreBusiness.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,9 @@ else
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 builder.Services.AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>));
+
+
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
 
 
