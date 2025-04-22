@@ -1,8 +1,11 @@
 using AutoMapper;
 using CoreBusiness.Interfaces;
+using FluentValidation;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using MinimalApi.Endpoint.Extensions;
+using PublicApi.ToDoEndpoints;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +36,7 @@ builder.Services.AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>));
 
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
+builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
 
 // Add builder.Services to the container.
