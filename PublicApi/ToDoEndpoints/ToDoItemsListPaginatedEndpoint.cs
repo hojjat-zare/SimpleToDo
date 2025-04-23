@@ -8,7 +8,7 @@ using AutoMapper;
 namespace PublicApi.ToDoEndpoints;
 
 public class ToDoItemsListPaginatedEndpoint(IMapper mapper) :
-    IEndpoint<IResult, ToDoItemsListPaginatedRequest, IRepository<ToDo>>
+    IEndpoint<IResult, ToDoItemsListPaginatedRequest, IReadRepository<ToDo>>
 {
 
     private readonly IMapper _mapper = mapper;
@@ -16,7 +16,7 @@ public class ToDoItemsListPaginatedEndpoint(IMapper mapper) :
     public void AddRoute(IEndpointRouteBuilder app)
     {
         app.MapGet("api/todos",
-            async ([AsParameters]ToDoItemsListPaginatedRequest request, IRepository<ToDo> itemRepository) =>
+            async ([AsParameters]ToDoItemsListPaginatedRequest request, IReadRepository<ToDo> itemRepository) =>
             {
                 return await HandleAsync(request, itemRepository);
             })
@@ -24,7 +24,7 @@ public class ToDoItemsListPaginatedEndpoint(IMapper mapper) :
             .WithTags("TodoEndpoints");
     }
 
-    public async Task<IResult> HandleAsync(ToDoItemsListPaginatedRequest request, IRepository<ToDo> repository)
+    public async Task<IResult> HandleAsync(ToDoItemsListPaginatedRequest request, IReadRepository<ToDo> repository)
     {
         var response = new ToDoItemsListPaginatedResponse(request.CorrelationId());
 
