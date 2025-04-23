@@ -4,7 +4,7 @@ using MinimalApi.Endpoint;
 
 namespace PublicApi.ToDoEndpoints;
 
-public class ToDoGetByIdEndpoint : IEndpoint<IResult, ToDoGetByIdEndpointRequest, IRepository<ToDo>>
+public class ToDoGetByIdEndpoint : IEndpoint<IResult, ToDoGetByIdEndpointRequest, IReadRepository<ToDo>>
 {
     public ToDoGetByIdEndpoint()
     {
@@ -13,7 +13,7 @@ public class ToDoGetByIdEndpoint : IEndpoint<IResult, ToDoGetByIdEndpointRequest
     public void AddRoute(IEndpointRouteBuilder app)
     {
         app.MapGet("api/todos/{Id}",
-            async (int Id, IRepository<ToDo> itemRepository) =>
+            async (int Id, IReadRepository<ToDo> itemRepository) =>
             {
                 return await HandleAsync(new ToDoGetByIdEndpointRequest(Id), itemRepository);
             })
@@ -23,7 +23,7 @@ public class ToDoGetByIdEndpoint : IEndpoint<IResult, ToDoGetByIdEndpointRequest
 
 
 
-    public async Task<IResult> HandleAsync(ToDoGetByIdEndpointRequest request, IRepository<ToDo> ToDoRepository)
+    public async Task<IResult> HandleAsync(ToDoGetByIdEndpointRequest request, IReadRepository<ToDo> ToDoRepository)
     {
         var response = new ToDoGetByIdEndpointResponse(request.CorrelationId());
 
